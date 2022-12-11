@@ -19,13 +19,9 @@ public class ROT13  {
         String result = "";
         for (Character i : text.toCharArray()) {
             String temp = i.toString();
-            if (temp.matches("[a-z]")) {
-                result += (char)(((i - (97 - (this.cf - this.cs))) % 26) + 97);
-            } else if (temp.matches("[A-Z]")) {
-                result += (char) (((i - (65 - (this.cf - this.cs))) % 26) + 65);
-            } else {
-                result += temp;
-            }
+            if (temp.matches("[a-z]")) result += (char)(((i - (97 - (this.cf - this.cs))) % 26) + 97);
+            if (temp.matches("[A-Z]")) result += (char) (((i - (65 - (this.cf - this.cs))) % 26) + 65);
+            if (!temp.matches("[a-zA-Z]")) result += temp;
         }
         return result;
     }
